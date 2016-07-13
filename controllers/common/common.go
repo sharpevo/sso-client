@@ -8,14 +8,14 @@ import (
 )
 
 type BaseController struct {
+	UserInfo userinfo.UserInfo
 	beego.Controller
 }
 
-func (c *BaseController) GetUserInfo() (userInfo userinfo.UserInfo) {
-	userInfo = userinfo.GetUserInfo(c.Ctx.Request)
-	beego.Debug("GetUserInfo:", userInfo)
-	c.Data["UserInfo"] = userInfo
-	return userInfo
+func (c *BaseController) GetUserInfo() {
+	c.UserInfo = userinfo.GetUserInfo(c.Ctx.Request)
+	beego.Debug("GetUserInfo:", c.UserInfo)
+	c.Data["UserInfo"] = c.UserInfo
 }
 
 func (c *BaseController) SetCookie(domain string, value string, exp int64) {
