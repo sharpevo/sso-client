@@ -1,7 +1,6 @@
 package userinfo
 
 import (
-	"github.com/astaxie/beego"
 	"net/http"
 	"strings"
 )
@@ -16,7 +15,6 @@ type UserInfo struct {
 func GetUserInfo(req *http.Request) (userInfo UserInfo) {
 	roles := req.Header.Get("Igenetech-User-Roles")
 	roleList := strings.Split(roles, ",")
-	beego.Debug("RoleList:", roleList)
 	roleMap := make(map[string]bool)
 	for _, role := range roleList {
 		roleMap[role] = true
@@ -28,5 +26,4 @@ func GetUserInfo(req *http.Request) (userInfo UserInfo) {
 		Roles: roleMap,
 	}
 	return userInfo
-
 }
