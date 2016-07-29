@@ -25,7 +25,7 @@ func GetRoleName(role string) (roleName string) {
 }
 
 func RoleCheck(ctx *context.Context, role string) {
-	redirect := beego.URLFor("HomeController.Get")
+	redirect := "/"
 
 	userInfo := userinfo.GetUserInfo(ctx.Request)
 	if !HasRole(userInfo, role) {
