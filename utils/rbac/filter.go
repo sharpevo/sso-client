@@ -15,12 +15,12 @@ func HasRole(userInfo userinfo.UserInfo, role string) bool {
 		return true
 	}
 	beego.Debug("HasRole:", roleName, "in", userInfo.Roles)
-	return userInfo.Roles[strings.ToLower(GetRoleName(role))]
+	return userInfo.Roles[strings.ToLower(roleName)]
 }
 
 func GetRoleName(role string) (roleName string) {
 	appName := beego.AppConfig.String("appname")
-	roleName = fmt.Sprintf("%s-%s", "admin", appName)
+	roleName = fmt.Sprintf("%s-%s", appName, "admin")
 	return roleName
 }
 
