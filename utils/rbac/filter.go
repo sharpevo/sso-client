@@ -20,7 +20,7 @@ func HasRole(userInfo userinfo.UserInfo, role string) bool {
 
 func GetRoleName(role string) (roleName string) {
 	appName := beego.AppConfig.String("appname")
-	roleName = fmt.Sprintf("%s-%s", appName, "admin")
+	roleName = fmt.Sprintf("%s-%s", strings.ToLower(appName), role)
 	return roleName
 }
 
