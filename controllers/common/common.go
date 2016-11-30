@@ -26,8 +26,8 @@ func (c *BaseController) SetCookie(domain string, value string, exp int64) {
 	if exp < 10 {
 		exp = 30
 	}
-	if exp > 7200 { // 5 days
-		exp = 7200
+	if exp > 43200 { // 30 days
+		exp = 43200
 	}
 	expiration := time.Now().Add(time.Duration(exp) * time.Minute)
 	cookie := http.Cookie{Name: "token", Value: value, HttpOnly: true, Domain: domain, Expires: expiration}
